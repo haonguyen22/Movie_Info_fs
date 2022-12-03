@@ -8,13 +8,26 @@ const charactersModel = require("../models/charactersModel");
 const reviewModel = require("../models/reviewModel");
 const genresModel = require("../models/genresModel");
 const castsModel = require("../models/castsModel");
+const hps = require("./../helpers/homeHps.js");
 
 exports.homePage = async (req, res) => {
     if (!req.session.user) {
         res.redirect("user/login");
     } else {
+        console.log(req);
+        const page = req.query.page || 1;
         const user = await userModel.getUserById(req.session.user);
-        res.render("home", { title: "Login", style: "login" });
+        const movies = await moviesModel.getMovieSortRating(page);
+        const totalPageMovie = movies.pageTotal > 5 ? 5 : movies.pageTotal;
+        res.render("home", {
+            title: "Login",
+            style: "login",
+            helpers: hps,
+            name: user.name,
+            movies: movies.data,
+            totalPageMovie,
+            page,
+        });
     }
 };
 

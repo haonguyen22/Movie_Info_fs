@@ -2,7 +2,7 @@ const pgp = require("pg-promise")();
 
 const cn = {
     host: "localhost",
-    port: "20470",
+    port: "5432",
     database: "movie_info",
     user: "postgres",
     password: "nguyenvanhao"

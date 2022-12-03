@@ -120,16 +120,6 @@ input:checked + .slider:before {
      outline: none;
 }
 
-.pagination li a{
-     width: 30px !important;
-     height: 4px !important;
-     padding: 0 !important;
-     border-radius: 0 !important;
-     margin: 0 2px;
-}
-.pagination li a:hover {
-     cursor: pointer;
-}
 
 @keyframes fadeIn {
 	from {

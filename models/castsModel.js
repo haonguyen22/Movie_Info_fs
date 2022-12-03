@@ -1,6 +1,23 @@
 const db = require("./database.js");
+const pageSize = 4;
 
 module.exports = {
+    getCastsSortBirthDate: async (page = 1) => {
+        try {
+            const size = await db.one('select count(*) from "Casts"');
+            const pageTotal = Math.ceil(parseInt(size.count) / pageSize);
+            const offset = (page - 1) * pageSize;
+            const data = await db.any(
+                `SELECT * FROM "Casts" Order by "birthDate" DESC LIMIT ${pageSize} OFFSET ${offset}`,
+            );
+            return {
+                data,
+                pageTotal,
+            };
+        } catch (e) {
+            console.log(e);
+        }
+    },
     insertCast: async (c) => {
         try {
             await db.any('Delete from "Casts" ');

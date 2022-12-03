@@ -31,7 +31,7 @@ app.use("/", homeRouter);
 
 app.use("/user", userRouter);
 
-app.listen(3000, () => {
-    console.log("Listening on port: 3000");
+app.listen(20470, () => {
+    console.log("Listening on port: 20470");
     // postData();
 });
