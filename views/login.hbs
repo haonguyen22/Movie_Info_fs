@@ -1,0 +1,23 @@
+<form id="form" action="/user/login" method="post">
+    <div class="title">
+        <a class="sign_up" href="/user/register">Đăng ký</a>
+        <a class="sign_in">Đăng nhập</a>
+    </div>
+    <hr />
+    <div class="form_input">
+        <label for="username">Username</label>
+        <input type="text" name="username" id="username" value="{{username}}" />
+        <p class="validation username"></p>
+    </div>
+    <div class="form_input">
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" value="{{password}}" />
+        <p class="validation email"></p>
+    </div>
+    <input type="checkbox" name="remember" id="remember" class="remember" />
+    <label for="remember">Ghi nhớ đăng nhập</label>
+
+    <p class="validation">{{{status}}}</p>
+
+    <button type="submit" id="btn_sign_in">Đăng nhập</button>
+</form>

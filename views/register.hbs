@@ -1,0 +1,37 @@
+<form id="form" action="register" method="post">
+    <div class="title">
+        <a class="sign_up">Đăng ký</a>
+        <a class="sign_in" href="login">Đăng nhập</a>
+    </div>
+    <hr />
+    <div class="form_input">
+        <label for="name">Họ và tên</label>
+        <input type="text" name="name" id="name" required value="{{name}}" />
+    </div>
+
+    <div class="form_input">
+        <label for="username">Username</label>
+        <input type="text" name="username" id="username" required value="{{username}}" />
+    </div>
+
+    <div class="form_input">
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" required value="{{password}}" />
+    </div>
+
+    <div class="form_input">
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" required value="{{email}}" />
+    </div>
+
+    <div class="form_input">
+        <label for="DOB">Ngày sinh</label>
+        <input type="date" name="DOB" id="DOB" required min="1900-01-01" max="2050-01-01" value="{{DOB}}" />
+    </div>
+    {{#if success}}
+        <p class="validation success">{{{status}}}</p>
+    {{else}}
+        <p class="validation">{{{status}}}</p>
+    {{/if}}
+    <button type="submit" id="btn_registration">Đăng kí</button>
+</form>

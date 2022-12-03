@@ -1,0 +1,32 @@
+
+
+.header {
+    font-size: 30px;
+    margin: 0;
+    color: rgba(9, 111, 2, 1);
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding-bottom: 8px;
+    text-align: center;
+}
+
+.group {
+    display: flex;
+    align-items: center;
+}
+
+.group__label {
+    flex: 1;
+    font-size: 16px;
+    font-weight: 600;
+}
+.group__item {
+    flex: 4;
+}
+
+.admin {
+    background-color: brown;
+    color: #fff;
+    text-align: center;
+}

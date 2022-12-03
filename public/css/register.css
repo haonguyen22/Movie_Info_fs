@@ -1,0 +1,100 @@
+body {
+    margin: 0;
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    background-color: #fff;
+}
+
+#form {
+    background-color: blanchedalmond;
+    padding: 24px 24px;
+    width: 400px;
+    min-height: 300px;
+    height: fit-content;
+    align-self: center;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px 0 rgba(51, 62, 73, 0.1);
+}
+
+.title {
+    display: flex;
+    justify-content: space-between;
+}
+
+.sign_up {
+    font-size: 30px;
+    margin: 0;
+    color: red;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding-bottom: 8px;
+}
+
+.sign_in {
+    font-size: 30px;
+    margin: 0;
+    color: rgba(33, 187, 22, 0.5);
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding-bottom: 8px;
+}
+
+.sign_in:hover {
+    cursor: pointer;
+    color: rgb(33, 187, 22);
+}
+
+.form_input {
+    display: flex;
+    flex-direction: column;
+}
+
+.form_input label {
+    color: #000;
+    font-weight: 600;
+    padding: 10px 0;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.form_input input {
+    padding: 8px;
+    outline: none;
+    border: 1px solid #000;
+    border-radius: 5px;
+}
+
+.validation {
+    font-size: 16px;
+    color: red;
+    margin: 0;
+    font-weight: bold;
+    line-height: 1.6rem;
+    text-align: center;
+    margin-top: 12px;
+}
+.success {
+    color: rgb(6, 131, 14) !important;
+}
+
+#btn_registration {
+    padding: 12px 20px;
+    width: 100%;
+    border-radius: 8px;
+    border: none;
+    display: block;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 12px auto 16px;
+    background-color: rgb(33, 187, 22);
+}
+
+#btn_registration:hover {
+    cursor: pointer;
+    background-color: rgba(33, 187, 22, 0.6);
+    color: rgba(0, 0, 0, 0.6)
+}
