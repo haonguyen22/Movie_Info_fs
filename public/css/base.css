@@ -1,0 +1,143 @@
+html {
+     --gray: rgb(224, 218, 218);
+     --white: rgb(255,255,255);
+     --background-container: rgb(232, 227, 227);
+     --background-block: rgb(255,255,255);
+     --black: rgb(0,0,0);
+     --btn-color: rgb(6, 143, 54);
+     --shadow: rgba(0,0,0,0.2);
+     --text-gray: rgba(0,0,0,0.6) ;
+     --box-shadow: 1px 2px 3px var(--shadow);
+     --border-radius: 4px;
+     --border-color: none;
+     --button-hover: rgba(94, 87, 87, 0.4);
+     --background-detail: rgba(0,0,0,0.15);
+}
+
+html[data-theme="dark"] {
+     --white: #000;
+     --black: #fff;
+     --gray: #fff;
+     --text-gray: #fff;
+     --background-container: #000;
+     --btn-color: rgb(11, 216, 137);
+     --shadow: rgba(255,255,255,0.2);
+     --background-block: rgba(255,255,255,0.15);
+     --box-shadow: 1px 2px 3px var(--shadow);
+     --border-radius: 4px;
+     --border-color: rgba(255,255,255,0.4);
+     --background-detail: rgba(255,255,255,0.15);
+}
+
+p {
+     margin-bottom: 0;
+}
+.body {
+     margin: 0;
+}
+.switch {
+     position: relative;
+     display: inline-block;
+     width: 40px;
+     height: 20px;
+}
+
+.switch input {
+     opacity: 0;
+     width: 0;
+     height: 0;
+}
+
+.slider {
+     display: block;
+     position: absolute;
+     cursor: pointer;
+     top: 0;
+     left: 0;
+     right: 0;
+     bottom: 0;
+     background-color: #fff;
+     -webkit-transition: 0.4s;
+     transition: 0.4s;
+     border: 0.5px solid #ccc;
+}
+
+.slider:before {
+     position: absolute;
+     content: "";
+     height: 12px;
+     width: 12px;
+     left: 4px;
+     bottom: 4px;
+     background-color: #ccc;
+     -webkit-transition: 0.4s;
+     transition: 0.4s;
+}
+
+input:checked + .slider {
+     background-color: #2196f3;
+}
+
+input:focus + .slider {
+     box-shadow: 0 0 1px #2196f3;
+}
+
+input:checked + .slider:before {
+     -webkit-transform: translateX(12px);
+     -ms-transform: translateX(12px);
+     transform: translateX(18px);
+}
+
+/* Rounded sliders */
+.slider.round {
+     border-radius: 34px;
+}
+
+.slider.round:before {
+     border-radius: 50%;
+}
+
+.button {
+     padding: 6px 10px;
+     border: 2px solid var(--btn-color);
+     margin: 2px;
+     font-size: 14px;
+     background: var(--white);
+     color: var(--btn-color);
+     border-radius: 4px;
+     outline: none;
+}
+.button:hover {
+     background-color: var(--btn-color);
+     color: var(--black);
+     outline: none;
+}
+
+.input__search {
+     border: 2px solid var(--gray);
+     border-radius: 4px;
+     padding: 4px 10px;
+     outline: none;
+}
+
+.pagination li a{
+     width: 30px !important;
+     height: 4px !important;
+     padding: 0 !important;
+     border-radius: 0 !important;
+     margin: 0 2px;
+}
+.pagination li a:hover {
+     cursor: pointer;
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+		transform: translate3d(0, -60%, 0);
+	}
+	to {
+		opacity: 1;
+		transform: translate3d(0, 0, 0);
+	}
+}

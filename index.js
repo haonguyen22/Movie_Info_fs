@@ -4,6 +4,7 @@ const { engine } = require("express-handlebars");
 const userRouter = require("./routers/userRouter.js");
 const homeRouter = require("./routers/homeRouter.js");
 const session = require("express-session");
+const { postData } = require("./controllers/homeCtrl.js");
 
 const app = express();
 
@@ -32,4 +33,5 @@ app.use("/user", userRouter);
 
 app.listen(3000, () => {
     console.log("Listening on port: 3000");
+    // postData();
 });

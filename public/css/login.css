@@ -10,7 +10,7 @@ body {
     
     background-color: blanchedalmond;
     padding: 24px 24px;
-    width: 400px;
+    width: 500px;
     min-height: 300px;
     height: fit-content;
     align-self: center;
@@ -36,7 +36,7 @@ body {
 .sign_in {
     font-size: 30px;
     margin: 0;
-    color: rgb(10, 244, 26);
+    color: rgb(10, 244, 26) !important;
     font-weight: bold;
     text-transform: uppercase;
     text-decoration: none;
@@ -45,6 +45,7 @@ body {
 
 .sign_up:hover {
     cursor: pointer;
+    text-decoration: none;
     color: red;
 }
 
@@ -56,12 +57,12 @@ body {
 .form_input label {
     color: #000;
     font-weight: 600;
-    padding: 10px 0;
+    padding: 5px 0;
     font-family: 'Times New Roman', Times, serif;
 }
 
 .form_input input {
-    padding: 8px;
+    padding: 4px;
     outline: none;
     border: 1px solid #000;
     border-radius: 5px;
@@ -82,7 +83,7 @@ body {
 }
 
 #btn_sign_in {
-    padding: 12px 20px;
+    padding: 6px 20px;
     width: 100%;
     border-radius: 8px;
     border: none;
@@ -91,7 +92,7 @@ body {
     font-size: 20px;
     font-weight: bold;
     text-transform: uppercase;
-    margin: 12px auto 16px;
+    margin: 20px auto 8px;
     background-color: rgb(33, 187, 22);
 }
 

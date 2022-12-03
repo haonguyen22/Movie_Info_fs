@@ -1,0 +1,45 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div id="nav">
+                <div class="nav__home">Home</div>
+                <div class="nav__search">
+                    <button class="button">Search</button>
+                    <button class="button bg-warning" data-bs-toggle="modal" data-bs-target="#addJson">Import</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+
+            {{!-- <div class="film__newest">
+                <button @click="previous">&lt;</button>
+                <div class="poster" v-for="n in 5" @click="clickMovie">
+                    <img :src="this.filmNewest[n-1].image" :alt="this.filmNewest[n-1].title">
+                    <div class="poster__desc">
+                        <h5 class="film__newest--name">{{this.filmNewest[n-1].title}}</h5>
+                        <h5 class="film__newest--name">Rate: {{this.filmNewest[n-1].imDbRating}}</h5>
+                        <h5 class="film__newest--name">Length: {{this.filmNewest[n-1].runtimeStr}}</h5>
+                        <ul class="pagination">
+                            <li class="page-item" v-for="i in 5">
+                                <a class="page-link page__selected" :id='i' v-if="i == n" @click="paginate"></a>
+                                <a class="page-link" :id='i' v-else @click="paginate"></a>
+
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+                <button @click="next">&gt;</button>
+            </div> --}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div id="footer">
+                Copyright &copy by Nguyễn Văn Hào - 20120470
+            </div>
+        </div>
+    </div>
+</div>
