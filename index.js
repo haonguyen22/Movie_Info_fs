@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const { engine } = require("express-handlebars");
 const userRouter = require("./routers/userRouter.js");
 const homeRouter = require("./routers/homeRouter.js");
+const movieRouter = require("./routers/movieRouter.js");
 const session = require("express-session");
 const { postData } = require("./controllers/homeCtrl.js");
 
@@ -30,6 +31,8 @@ app.set("views", "./views");
 app.use("/", homeRouter);
 
 app.use("/user", userRouter);
+
+app.use("/movie", movieRouter);
 
 app.listen(20470, () => {
     console.log("Listening on port: 20470");

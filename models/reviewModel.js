@@ -18,8 +18,14 @@ module.exports = {
                     console.log(e);
                 }
             });
-
-            return data;
+        } catch (e) {
+            console.log(e);
+        }
+    },
+    getReviewByID: async (id) => {
+        try {
+            const data = await db.any(`SELECT * FROM "Reviews" where "movie_id" = $1`, [id]);
+            return data
         } catch (e) {
             console.log(e);
         }

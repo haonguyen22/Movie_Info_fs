@@ -12,4 +12,8 @@ router.post("/register", userCtrl.postRegister);
 
 router.post("/logout", userCtrl.logOut);
 
+router.post("/favorite/:id", userCtrl.AddFavorite);
+
+router.get("/favorite", userCtrl.getFavoriteMovie);
+
 module.exports = router;

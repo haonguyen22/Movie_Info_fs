@@ -1,32 +1,32 @@
 .header {
-    font-size: 30px;
-    margin: 0;
-    color: rgba(9, 111, 2, 1);
-    font-weight: bold;
-    text-transform: uppercase;
-    text-decoration: none;
-    padding-bottom: 8px;
-    text-align: center;
+     font-size: 30px;
+     margin: 0;
+     color: rgba(9, 111, 2, 1);
+     font-weight: bold;
+     text-transform: uppercase;
+     text-decoration: none;
+     padding-bottom: 8px;
+     text-align: center;
 }
 
 .group {
-    display: flex;
-    align-items: center;
+     display: flex;
+     align-items: center;
 }
 
 .group__label {
-    flex: 1;
-    font-size: 16px;
-    font-weight: 600;
+     flex: 1;
+     font-size: 16px;
+     font-weight: 600;
 }
 .group__item {
-    flex: 4;
+     flex: 4;
 }
 
 .admin {
-    background-color: brown;
-    color: #fff;
-    text-align: center;
+     background-color: brown;
+     color: #fff;
+     text-align: center;
 }
 
 .container {
@@ -271,7 +271,6 @@
      display: flex;
      flex-wrap: wrap;
      margin-top: 20px;
-
 }
 .film__item--search {
      display: flex;
@@ -313,7 +312,6 @@
      border: 1px solid var(--border-color);
 }
 .film_participated {
-
 }
 .film__img {
      display: flex;
@@ -353,13 +351,11 @@
 }
 .detail_desc span {
      color: red;
-     
 }
 .detail_desc span:hover {
      cursor: pointer;
      text-decoration: underline;
 }
-
 
 .message__error {
      margin: 20px auto 0;
@@ -383,8 +379,8 @@
      font-size: 16px;
      color: var(--white) !important;
      padding: 4px 10px;
-     text-overflow: ellipsis; 
-     overflow: hidden; 
+     text-overflow: ellipsis;
+     overflow: hidden;
      white-space: nowrap;
      text-align: center;
 }
@@ -426,3 +422,20 @@
      margin: 30px 0 10px;
      border: 1px solid var(--border-color);
 }
+
+.detail_desc .overflow-text {
+     height: 50px;
+     line-height: 20px;
+     word-break: break-all;
+     overflow: hidden;
+     text-overflow: ellipsis;
+}
+.detail_desc .overflow-text a {
+     text-decoration: none;
+     color: #000;
+
+}
+.detail_desc .overflow-text a:hover {
+     color: rgba(0, 0, 0, 0.7);
+}
+

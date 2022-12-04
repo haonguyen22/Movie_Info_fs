@@ -1,4 +1,6 @@
 const db = require("./database.js");
+const moviesModel = require("./moviesModel.js");
+const pageSize = 4;
 
 module.exports = {
     getAllUsers: async () => {
@@ -37,9 +39,46 @@ module.exports = {
                 user.password,
                 user.Name,
                 user.email,
-                user.dob
+                user.dob,
             ]);
             return data;
+        } catch (e) {
+            console.log(e);
+        }
+    },
+    getFavoriteMovie: async (user, page = 1) => {
+        try {
+            const size = await db.one('select count(*) from "FavoriteMovie" where user_id = $1 ', [user.id]);
+            const pageTotal = Math.ceil(parseInt(size.count) / pageSize);
+            const offset = (page - 1) * pageSize;
+            const favorIDs = await db.any(
+                `SELECT * FROM "FavoriteMovie" where user_id = $1 limit ${pageSize} OFFSET ${offset}`,
+                [user.id],
+            );
+            var data = new Array();
+            for (let i = 0; i < favorIDs.length; i++) {
+                const movie = await moviesModel.getMovieByID(favorIDs[i].movie_id);
+                data.push(movie);
+            }
+            return {
+                data,
+                favorIDs,
+                pageTotal,
+                page,
+            };
+        } catch (e) {
+            console.log(e);
+        }
+    },
+    IsFavorite: async (user, movie_id) => {
+        try {
+            const movie = await db.any(`SELECT * FROM "FavoriteMovie" where user_id = $1 and movie_id = $2`, [
+                user.id,
+                movie_id,
+            ]);
+            console.log(movie);
+            if (movie.length > 0) return true;
+            else return false;
         } catch (e) {
             console.log(e);
         }

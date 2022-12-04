@@ -13,6 +13,14 @@ module.exports = {
 
         return data;
     },
+    getGenresByID: async (id) => {
+        try {
+            const data = await db.any(`SELECT genre FROM "Genres" where "movie_id" = $1`, [id]);
+            return data;
+        } catch (e) {
+            console.log(e);
+        }
+    },
     deleteGenres: async () => {
         try {
             await db.any('Delete from "Genres"');

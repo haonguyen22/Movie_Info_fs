@@ -37,6 +37,14 @@ module.exports = {
             console.log(e);
         }
     },
+    getCastByID: async (id) => {
+        try {
+            const data = await db.any(`SELECT * FROM "Casts" where "id" = $1`, [id]);
+            return data
+        } catch (e) {
+            console.log(e);
+        }
+    },
     deleteCasts: async () => {
         try {
             await db.any('Delete from "Casts"');

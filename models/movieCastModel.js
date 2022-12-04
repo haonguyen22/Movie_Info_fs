@@ -10,6 +10,14 @@ module.exports = {
             console.log(e);
         }
     },
+    getMovieCastByID: async (id) => {
+        try {
+            const data = await db.any(`SELECT * FROM "MovieCasts" where "movie_id" = $1`, [id]);
+            return data
+        } catch (e) {
+            console.log(e);
+        }
+    },
     deleteMovieCasts: async () => {
         try {
             await db.any('Delete from "MovieCasts"');

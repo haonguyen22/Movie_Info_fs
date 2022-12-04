@@ -1,0 +1,67 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div id="nav">
+                <div class="nav__home"><a href="/" style="text-decoration: none; color: #000; font-size: 20px;">Home</a>
+                </div>
+                <div class="nav__search">
+                    <input type="text" name="search" class="input__search" placeholder="Search">
+                    <button class="button">Search</button>
+                </div>
+                <form action="/user/logout" method="post" style="margin: 0;">
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Chào {{{name}}}
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                            <li><a class="dropdown-item" href="/user/favorite">Danh sách phim yêu thích</a></li>
+                            <li>
+                                <button class="dropdown-item" type="submit">Đăng xuất</button>
+                            </li>
+                        </ul>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="detail__item">
+                <img src="{{movie.img}}" alt="{{movie.title}}" style="max-height: 500px;">
+                <div class="detail">
+                    <div class="detail__header">
+                        <h2>{{{movie.title}}}</h2>
+                    </div>
+                    <div class="detail_desc">
+                        <div style="display: flex; align-items: center; justify-content: space-between;">
+                            <p><b>Year:</b> {{{movie.year}}}</p>
+                            <form action="/user/favorite/{{movie.id}}" method="post">
+                                {{#if IsFavorite}}
+                                <button type="submit" class="btn btn-warning" name="status" value="false"> Bỏ yêu thích ❤</button>
+                                {{else}}
+                                <button type="submit" class="btn btn-danger" name="status" value="true"> Yêu thích ❤</button>
+                                {{/if}}
+                            </form>
+                        </div>
+
+                        <p><b>Genres:</b> {{{genre}}}</p>
+                        <p><b>Rating:</b> {{{movie.rating}}}</p>
+                        <p class="overflow-text"><b>Diễn viên:</b> {{#each movieCasts}} <a
+                                href="/cast/{{cast_id}}">{{{cast_name}}}</a>,
+                            {{/each}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div id="footer">
+                Copyright &copy by Nguyễn Văn Hào - 20120470
+            </div>
+        </div>
+    </div>
+</div>

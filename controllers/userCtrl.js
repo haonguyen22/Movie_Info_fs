@@ -1,4 +1,7 @@
 const crypto = require("crypto-js");
+const homeHps = require("../helpers/homeHps");
+const { insertFavorite, deleteFavorite } = require("../models/favoriteModel");
+const moviesModel = require("../models/moviesModel");
 const userModel = require("./../models/userModel");
 
 const hashLength = 64;
@@ -89,4 +92,36 @@ exports.logOut = (req, res) => {
     delete req.session.user;
     delete req.session.remember;
     res.redirect("login");
+};
+
+exports.AddFavorite = async (req, res) => {
+    if (!req.session.user) res.render("login", { style: "login", title: "login" });
+    else {
+        const user = await userModel.getUserById(req.session.user);
+        const movie = await moviesModel.getMovieByID(req.params.id);
+        if (req.body.status == "true") {
+            await insertFavorite(movie, user);
+        } else {
+            await deleteFavorite(movie, user);
+        }
+        res.redirect("back");
+    }
+};
+
+exports.getFavoriteMovie = async (req, res) => {
+    const page = req.query.page || 1;
+    if (!req.session.user) {
+        res.redirect("/user/login");
+    } else {
+        const user = await userModel.getUserById(req.session.user);
+        const data = await userModel.getFavoriteMovie(user, page);
+
+        res.render("favorite", {
+            helpers: homeHps,
+            name: user.name,
+            movies: data.data,
+            page: data.page,
+            totalPageMovie: data.pageTotal,
+        });
+    }
 };

@@ -2,7 +2,8 @@
     <div class="row">
         <div class="col-12">
             <div id="nav">
-                <div class="nav__home"><a href="/" style="text-decoration: none; color: #000; font-size: 20px;">Home</a></div>
+                <div class="nav__home"><a href="/" style="text-decoration: none; color: #000; font-size: 20px;">Home</a>
+                </div>
                 <div class="nav__search">
                     <input type="text" name="search" class="input__search" placeholder="Search">
                     <button class="button">Search</button>
@@ -28,7 +29,7 @@
         <div class="col-12">
             <div class="film__component">
                 <div class="film__header">
-                    <div class="film__title">Bảng xếp hạng Rating cao nhất</div>
+                    <div class="film__title">Danh sách phim yêu thích</div>
                 </div>
                 <div class="film__list">
                     {{#each movies}}
@@ -41,7 +42,7 @@
                     </a>
                     {{/each}}
                 </div>
-                <form action="/" method="get">
+                <form action="/user/favorite/" method="get">
                     <nav aria-label="Page navigation example">
                         <ul class="pagination justify-content-center">
                             {{#time totalPageMovie}}
