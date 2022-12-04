@@ -39,7 +39,7 @@
         <div class="col-12">
             <div class="film__component">
                 <div class="film__header">
-                    <div class="film__title">Bảng xếp hạng Rating cao nhất</div>
+                    <div class="film__title">Kết quả tìm kiếm "{{{search}}}"</div>
                 </div>
                 <div class="film__list">
                     {{#each movies}}
@@ -52,9 +52,11 @@
                     </a>
                     {{/each}}
                 </div>
-                <form action="/" method="get">
+                <form action="/search" method="get">
                     <nav aria-label="Page navigation example">
                         <ul class="pagination justify-content-center">
+                            <input type="text" hidden name="search" value="{{search}}" ></input>
+                            <input type="text" hidden name="type" value="{{type}}"></input>
                             {{#time totalPageMovie}}
                             {{#ifEqual this ../page}}
                             <li class="page-item active"><button class="page-link" type="submit" name="page"

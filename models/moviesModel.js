@@ -7,7 +7,6 @@ module.exports = {
             const size = await db.one('select count(*) from "Movies"');
             const pageTotal = Math.ceil(parseInt(size.count) / pageSize);
             const offset = (page - 1) * pageSize;
-            
             const data = await db.any(
                 `SELECT * FROM "Movies" Order by "rating" DESC LIMIT ${pageSize} OFFSET ${offset}`,
             );
@@ -23,6 +22,19 @@ module.exports = {
         try {
             const data = await db.one(`SELECT * FROM "Movies" where "id" = $1`, [id]);
             return data;
+        } catch (e) {
+            console.log(e);
+        }
+    },
+    searchMovie: async (search, page = 1) => {
+        try {
+            const size = await db.one(`select count(*) from "Movies" where "title" LIKE '${search}%'`);
+            const pageTotal = Math.ceil(parseInt(size.count) / pageSize);
+            const offset = (page - 1) * pageSize;
+            const data = await db.any(
+                `select * from "Movies" where "title" LIKE '${search}%' LIMIT ${pageSize} OFFSET ${offset}`,
+            );
+            return { data, pageTotal };
         } catch (e) {
             console.log(e);
         }

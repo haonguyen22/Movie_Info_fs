@@ -1,0 +1,115 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div id="nav">
+                <div class="nav__home"><a href="/" style="text-decoration: none; color: #000; font-size: 20px;">Home</a>
+                </div>
+                <form action="/search" method="get" style="margin: 0;">
+                    <div class="nav__search">
+                        <div class="input-group">
+                            <input type="text" class="form-control" aria-label="Text input with dropdown button"
+                                placeholder="Search here..." style="margin: 0;" name="search">
+                            <select class="form-select" id="inputGroupSelect02" name="type">
+                                <option value="name" selected>Tên phim</option>
+                                <option value="genre">Thể loại phim</option>
+                                <option value="cast">Diễn viên</option>
+                            </select>
+                        </div>
+                        <button class="button" type="submit">Search</button>
+                    </div>
+                </form>
+                <form action="/user/logout" method="post" style="margin: 0;">
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Chào {{{name}}}
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                            <li><a class="dropdown-item" href="user/favorite">Danh sách phim yêu thích</a></li>
+                            <li>
+                                <button class="dropdown-item" type="submit">Đăng xuất</button>
+                            </li>
+                        </ul>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="film__component">
+                <div class="film__header">
+                    <div class="film__title">Kết quả tìm kiếm "{{{search}}}"</div>
+                </div>
+                <table class="table table-striped col-12 mt-4" style="text-align: center;">
+                    <thead class="table-dark">
+                        <tr>
+                            <th width="10%" style="text-align: center;">#</th>
+                            <th width="20%">Name</th>
+                            <th width="20%">RealName</th>
+                            <th width="30%" style="text-align: center;"></th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-group-divider">
+                        {{#each casts}}
+                        <tr>
+
+                            <td scope="row" style="text-align: center; vertical-align: middle;">
+                                <a href="/cast/{{id}}">
+                                    {{{id}}}
+                                </a>
+                            </td>
+
+                            <td style="vertical-align: middle;">
+                                <a href="/cast/{{id}}">
+                                    {{{name}}}
+                                </a>
+                            </td>
+                            <td style="vertical-align: middle;">
+                                <a href="/cast/{{id}}">
+                                    {{{realName}}}
+                                </a>
+                            </td>
+
+                            <td style="text-align: center;">
+                                <a href="/cast/{{id}}">
+                                    <img src="{{image}}" alt="{{name}}" class="image">
+                                </a>
+                            </td>
+                        </tr>
+
+                        {{/each}}
+                    </tbody>
+                </table>
+                <nav aria-label="Page navigation example">
+                    <form action="/search" method="get">
+                        <ul class="pagination justify-content-center pagination-md">
+                            <input type="text" hidden name="search" value="{{search}}"></input>
+                            <input type="text" hidden name="type" value="{{type}}"></input>
+                            {{#time totalPage}}
+                            {{#ifEqual ../page this }}
+                            <li class="page-item active"><button class="page-link" name="page"
+                                    value="{{this}}">{{{this}}}</button></li>
+                            {{/ifEqual}}
+                            {{#ifNotEqual ../page this }}
+                            <li class="page-item"><button class="page-link" name="page"
+                                    value="{{this}}">{{{this}}}</button>
+                            </li>
+                            {{/ifNotEqual}}
+                            {{/time}}
+                        </ul>
+                    </form>
+                </nav>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div id="footer">
+                Copyright &copy by Nguyễn Văn Hào - 20120470
+            </div>
+        </div>
+    </div>
+</div>

@@ -4,10 +4,20 @@
             <div id="nav">
                 <div class="nav__home"><a href="/" style="text-decoration: none; color: #000; font-size: 20px;">Home</a>
                 </div>
-                <div class="nav__search">
-                    <input type="text" name="search" class="input__search" placeholder="Search">
-                    <button class="button">Search</button>
-                </div>
+                <form action="/search" method="get" style="margin: 0;">
+                    <div class="nav__search">
+                        <div class="input-group">
+                            <input type="text" class="form-control" aria-label="Text input with dropdown button"
+                                placeholder="Search here..." style="margin: 0;" name="search">
+                            <select class="form-select" id="inputGroupSelect02" name="type">
+                                <option value="name" selected>Tên phim</option>
+                                <option value="genre">Thể loại phim</option>
+                                <option value="cast">Diễn viên</option>
+                            </select>
+                        </div>
+                        <button class="button" type="submit">Search</button>
+                    </div>
+                </form>
                 <form action="user/logout" method="post" style="margin: 0;">
                     <div class="dropdown">
                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2"

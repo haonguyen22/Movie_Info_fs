@@ -18,6 +18,19 @@ module.exports = {
             console.log(e);
         }
     },
+    searchCastsByName: async (search, page = 1) => {
+        try {
+            const size = await db.one(`select count(*) from "Casts" where "name" LIKE '${search}%'`);
+            const pageTotal = Math.ceil(parseInt(size.count) / pageSize);
+            const offset = (page - 1) * pageSize;
+            const data = await db.any(
+                `select * from "Casts" where "name" LIKE '${search}%' LIMIT ${pageSize} OFFSET ${offset}`,
+            );
+            return { data, pageTotal };
+        } catch (e) {
+            console.log(e);
+        }
+    },
     insertCast: async (c) => {
         try {
             await db.any('Delete from "Casts" ');
