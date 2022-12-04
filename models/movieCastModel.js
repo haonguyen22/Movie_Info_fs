@@ -6,7 +6,11 @@ module.exports = {
     insertMovieCast: async (m) => {
         try {
             m.casts.map(async (c) => {
-                await db.one('Insert into "MovieCasts" values ($1, $2, $3)', [m.id, c.id, c.name]);
+                try {
+                    await db.one('Insert into "MovieCasts" values ($1, $2, $3)', [m.id, c.id, c.name]);
+                } catch (e) {
+                    console.log(e);
+                }
             });
         } catch (e) {
             console.log(e);
@@ -34,7 +38,7 @@ module.exports = {
                 var movie = await moviesModel.getMovieByID(movieIDs[i].movie_id);
                 data.push(movie);
             }
-            
+
             return { data, pageTotal };
         } catch (e) {
             console.log(e);

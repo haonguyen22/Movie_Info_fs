@@ -17,7 +17,7 @@ exports.homePage = async (req, res) => {
         const user = await userModel.getUserById(req.session.user);
         const movies = await moviesModel.getMovieSortRating(page);
         const totalPageMovie = movies.pageTotal;
-    
+
         res.render("home", {
             title: "Login",
             style: "login",
@@ -66,6 +66,39 @@ exports.postData = async () => {
                 console.log(e);
             }
         });
+    } catch (e) {
+        console.log(e);
+    }
+};
+
+exports.importData = async (req, res) => {
+    try {
+        const absolutePath = path.join(__dirname.substring(0, __dirname.length - 11), req.file.path);
+        const jsonString = fs.readFileSync(absolutePath, "utf-8");
+        const data = JSON.parse(jsonString);
+        if (req.file.originalname === "casts.json") {
+            try {
+                data.map(async (cast) => {
+                    await castsModel.insertCast(cast);
+                });
+                res.redirect("back");
+            } catch (e) {
+                console.log(e);
+            }
+        }
+        if (req.file.originalname === "movies.json") {
+            try {
+                data.map(async (m) => {
+                    await moviesModel.insertMovies(m);
+                    await reviewModel.insertReviews(m);
+                    await movieCastModel.insertMovieCast(m);
+                    await genresModel.insertGenres(m);
+                });
+                res.redirect("back");
+            } catch (e) {
+                console.log(e);
+            }
+        }
     } catch (e) {
         console.log(e);
     }

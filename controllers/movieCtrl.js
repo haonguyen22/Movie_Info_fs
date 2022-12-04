@@ -6,7 +6,7 @@ const userModel = require("../models/userModel");
 
 exports.movieDetail = async (req, res) => {
     const id = req.params.id;
-    if (!req.session.user) res.render("login", { style: "login", title: "login" });
+    if (!req.session.user) res.redirect("/user/login");
     else {
         const movie = await moviesModel.getMovieByID(id);
         const genres = await genresModel.getGenresByID(id);
@@ -20,7 +20,7 @@ exports.movieDetail = async (req, res) => {
 
         const review = await reviewModel.getReviewByID(id);
         const IsFavorite = await userModel.IsFavorite(user, id);
-        console.log(IsFavorite);
+        console.log(review);
         res.render("movieDetail", { genre, movie: movie, movieCasts, name: user.name, IsFavorite });
     }
 };
