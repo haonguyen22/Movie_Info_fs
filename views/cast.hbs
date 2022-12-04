@@ -1,0 +1,90 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div id="nav">
+                <div class="nav__home"><a href="/" style="text-decoration: none; color: #000; font-size: 20px;">Home</a>
+                </div>
+                <div class="nav__search">
+                    <input type="text" name="search" class="input__search" placeholder="Search">
+                    <button class="button">Search</button>
+                </div>
+                <form action="user/logout" method="post" style="margin: 0;">
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Chào {{{name}}}
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                            <li><a class="dropdown-item" href="/user/favorite">Danh sách phim yêu thích</a></li>
+                            <li>
+                                <button class="dropdown-item" type="submit">Đăng xuất</button>
+                            </li>
+                        </ul>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="detail__item">
+                <img src="{{cast.image}}" alt="{{cast.name}}" style="max-height: 500px;">
+                <div class="detail">
+                    <div class="detail__header">
+                        <h2>{{{cast.name}}}</h2>
+                    </div>
+                    <div class="detail_desc">
+                        <p><b>Real name:</b> {{{cast.realName}}}</p>
+                        <p><b>Birthdate:</b> {{{cast.birthdate}}}</p>
+                        <p><b>Place:</b> {{{cast.birthPlace}}}</p>
+                        <p><b>Gender:</b> {{{cast.gender}}}</p>
+                        <p><b>LegacyNameText:</b> {{{cast.legacyNameText}}}</p>
+                    </div>
+                    <div class="film__component">
+                        <div class="film__header">
+                            <div class="film__title">Danh sách phim đã đóng</div>
+                        </div>
+                        <div class="film__list">
+                            {{#each movies}}
+                            <a class="card" style="width: 20%; text-decoration: none; color: #000;"
+                                href="/movie/{{id}}">
+                                <img src="{{img}}" class="card-img-top" alt="{{title}}" style="width: 100%;">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{{title}}}</h5>
+                                    <p class="card-text">Ratings: {{{rating}}}</p>
+                                </div>
+                            </a>
+                            {{/each}}
+                        </div>
+                        <form action="/cast/{{cast.id}}" method="get">
+                            <nav aria-label="Page navigation example">
+                                <ul class="pagination justify-content-center">
+                                    {{#time totalPageMovie}}
+                                    {{#ifEqual this ../page}}
+                                    <li class="page-item active"><button class="page-link" type="submit" name="page"
+                                            value="{{this}}">{{{this}}}</button></li>
+                                    {{/ifEqual}}
+                                    {{#ifNotEqual this ../page}}
+                                    <li class="page-item"><button class="page-link" type="submit" name="page"
+                                            value="{{this}}">{{{this}}}</button></li>
+                                    {{/ifNotEqual}}
+                                    {{/time}}
+                                </ul>
+                            </nav>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div id="footer">
+                Copyright &copy by Nguyễn Văn Hào - 20120470
+            </div>
+        </div>
+    </div>
+</div>
