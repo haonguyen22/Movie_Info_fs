@@ -1,12 +1,6 @@
 const pgp = require("pg-promise")();
 
-const cn = {
-    host: "localhost",
-    port: "5432",
-    database: "movie_info",
-    user: "postgres",
-    password: "nguyenvanhao"
-};
+const cn = require("./../configs/connectStr.js");
 
 const db = pgp(cn);
 

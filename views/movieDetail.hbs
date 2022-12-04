@@ -71,6 +71,32 @@
                     </div>
                 </div>
             </div>
+
+            <div class="film__component">
+                <div class="film__header">
+                    <div class="film__title">Reviews</div>
+                    <input type="text" name="id" id="movie_id" value="{{movie.id}}" hidden>
+                </div>
+                <div class="film__list review__list">
+                    {{!-- <a class="card" style="width: 45%; text-decoration: none; color: #000;" href="/movie/{{id}}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{{author}}}</h5>
+                            <p class="card-text">Ratings: {{{authorRating}}}/10</p>
+                            <p class="card-text">{{{reviewText}}}</p>
+                        </div>
+                    </a> --}}
+                </div>
+                {{!-- <form action="/movie/{{movie.id}}" method="get"> --}}
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination justify-content-center pagination">
+                            {{!-- <li class="page-item active"><button class="review__pagination page-link" type="button" name="page"
+                                    value="{{this}}">{{{this}}}</button></li>
+                            <li class="page-item"><button class="review__pagination page-link" type="button" name="page"
+                                    value="{{this}}">{{{this}}}</button></li> --}}
+                        </ul>
+                    </nav>
+                {{!-- </form> --}}
+            </div>
         </div>
     </div>
 

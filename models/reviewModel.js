@@ -1,4 +1,5 @@
 const db = require("./database.js");
+const pageSize = 2 ;
 
 module.exports = {
     insertReviews: async (m) => {
@@ -22,10 +23,16 @@ module.exports = {
             console.log(e);
         }
     },
-    getReviewByID: async (id) => {
+    getReviewByID: async (id, page = 1) => {
         try {
-            const data = await db.any(`SELECT * FROM "Reviews" where "movie_id" = $1`, [id]);
-            return data
+            const size = await db.one(`SELECT count(*) FROM "Reviews" where "movie_id" = $1`, [id]);
+            const pageTotal = Math.ceil(parseInt(size.count) / pageSize);
+            const offset = (page - 1) * pageSize;
+            const data = await db.any(
+                `SELECT * FROM "Reviews" where "movie_id" = $1  LIMIT ${pageSize} OFFSET ${offset}`,
+                [id],
+            );
+            return { data, pageTotal };
         } catch (e) {
             console.log(e);
         }

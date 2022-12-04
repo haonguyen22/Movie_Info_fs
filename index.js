@@ -42,5 +42,4 @@ app.use("/search", searchRouter);
 
 app.listen(20470, () => {
     console.log("Listening on port: 20470");
-    // postData();
 });
